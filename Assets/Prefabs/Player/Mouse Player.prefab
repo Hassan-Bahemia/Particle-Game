@@ -4983,41 +4983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b140245a5fe447599a2583e92d36481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceInput:
-    m_Name: Force Input
-    m_Type: 2
-    m_ExpectedControlType: Vector2
-    m_Id: 90951e90-bd69-45a6-aff1-ea9a7bcd4235
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: db7deea6-51da-4a96-b88c-3edc36b0dd72
-      m_Path: <Mouse>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Force Input
-      m_Flags: 0
-  _ButtonDown:
-    m_Name: Button Down
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: 5a7994dc-bb09-43e7-b52d-5a614cc6d8bd
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: a939b207-f551-477a-858f-8ef0b167cba3
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Button Down
-      m_Flags: 0
   _minForce: 0
   _maxForce: 10
-  _forceMultiplier: 0.1
+  _forceMultiplier: 0.035
 --- !u!114 &-8282660213992875451
 MonoBehaviour:
   m_ObjectHideFlags: 0
