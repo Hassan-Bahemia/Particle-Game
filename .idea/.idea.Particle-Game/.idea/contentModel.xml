@@ -11,6 +11,7 @@
             <e p="EnemyYellowSpawner.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
+            <e p="PauseGame.cs" t="Include" />
             <e p="ScanlineEffect.cs" t="Include" />
           </e>
           <e p="Input_Support" t="Include">

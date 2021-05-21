@@ -39,12 +39,13 @@ namespace Player
             {
                 if (_devices.Contains(gamepad))
                     continue;
-                if (!gamepad.rightTrigger.wasPressedThisFrame)
+                if (!gamepad.buttonSouth.wasPressedThisFrame)
                     continue;
                 //Spawns New Gamepad Player
                 _devices.Add(gamepad);
                 var player = SpawnPlayer(_ControllerPlayer);
                 player.GetComponent<ControllerInput>().SetGamepad(gamepad);
+                _playerCount++;
                 print(_devices.Count);
             }
         }
