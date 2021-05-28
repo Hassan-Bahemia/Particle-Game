@@ -12,38 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f6667135a947fc808a33fc88225ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceInput:
-    m_Name: Force Input
-    m_Type: 2
-    m_ExpectedControlType: Vector2
-    m_Id: 6b8ec5d1-8794-4b33-90fb-fce6cf6f91b1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 55e34cc7-6724-48b8-9513-40a358a24868
-      m_Path: <Gamepad>/leftStick
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Force Input
-      m_Flags: 0
-  _ButtonDown:
-    m_Name: Button Down
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: cdd2f57d-59e8-4bfb-8534-9327964ab71d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 7273e6ba-9745-4a04-8ca5-871f7afa4df3
-      m_Path: <Gamepad>/rightTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Button Down
-      m_Flags: 0
   _minForce: 0
   _maxForce: 10
   _forceMultiplier: 5

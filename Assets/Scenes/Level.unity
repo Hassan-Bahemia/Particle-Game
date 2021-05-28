@@ -14902,6 +14902,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _players: []
+  _playerID:
+  - Player 1
+  - Player 2
+  - Player 3
+  - Player 4
   _playerColours:
   - serializedVersion: 2
     key0: {r: 0, g: 1, b: 0.7549591, a: 1}

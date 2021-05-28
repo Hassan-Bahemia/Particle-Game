@@ -23,6 +23,7 @@
             <e p="PlayerColour.cs" t="Include" />
             <e p="PlayerManager.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerName.cs" t="Include" />
             <e p="PlayerSpawner.cs" t="Include" />
             <e p="PlayerTrajectory.cs" t="Include" />
           </e>
