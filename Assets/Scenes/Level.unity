@@ -15499,10 +15499,15 @@ MonoBehaviour:
   - {fileID: 7470981191697680976, guid: c0623f9837f634d4baa690b28bf4fd57, type: 3}
   _time: 0
   _timeBetweenSpawns: 0
-  _mainCamera: {fileID: 0}
   _angle: 0
   _pos: {x: 0, y: 0, z: 0}
   _toBeSpawned: {fileID: 7470981191697680976, guid: c0623f9837f634d4baa690b28bf4fd57, type: 3}
+  _minX: -31
+  _maxX: 30
+  _minY: 8.9
+  _maxY: -13
+  _enemiesCount: 0
+  _maxEnemiesOnScreen: 15
 --- !u!4 &643378948
 Transform:
   m_ObjectHideFlags: 0
@@ -15664,7 +15669,7 @@ GameObject:
   - component: {fileID: 1017692176}
   - component: {fileID: 1017692177}
   m_Layer: 5
-  m_Name: Players
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16983,8 +16988,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  _HUD: {fileID: 1017692175}
   _pauseMenu: {fileID: 2065113303}
+  _disabledComponents:
+  - {fileID: 301443354}
+  - {fileID: 1017692175}
+  - {fileID: 214483565}
+  - {fileID: 643378946}
 --- !u!4 &1900906415
 Transform:
   m_ObjectHideFlags: 0

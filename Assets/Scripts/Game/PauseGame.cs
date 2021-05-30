@@ -1,37 +1,55 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Input_Support;
-using UnityEditor;
 using UnityEngine.InputSystem;
 
-public class PauseGame : MonoBehaviour
+namespace Game
 {
-    [SerializeField] private bool isPaused;
-    [SerializeField] private GameObject _HUD;
-    [SerializeField] private GameObject _pauseMenu;
-
-    private void Awake()
+    public class PauseGame : MonoBehaviour
     {
-        isPaused = false;
-        _HUD.SetActive(true);
-        _pauseMenu.SetActive(false);
-    }
+        [SerializeField] private bool isPaused;
+        [SerializeField] private GameObject _pauseMenu;
+        [SerializeField] private GameObject[] _disabledComponents;
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateControllerPause();
-        UpdateKeyboardPause();
-    }
-
-    private void UpdateControllerPause()
-    {
-        foreach (var gamepad in Gamepad.all)
+        private void Awake()
         {
-            if (!gamepad.buttonEast.wasReleasedThisFrame)
-                continue;
+            isPaused = false;
+            _pauseMenu.SetActive(false);
+            var _clonedEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (var t in _disabledComponents)
+            {
+                t.SetActive(true);
+            }
+            
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            UpdateControllerPause();
+            UpdateKeyboardPause();
+        }
+
+        private void UpdateControllerPause()
+        {
+            foreach (var gamepad in Gamepad.all)
+            {
+                if (!gamepad.startButton.wasReleasedThisFrame)
+                    continue;
+                if (!isPaused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    UnPause();
+                }
+
+            }
+        }
+
+        private void UpdateKeyboardPause()
+        {
+            if (!Keyboard.current.escapeKey.wasReleasedThisFrame)
+                return;
             if (!isPaused)
             {
                 Pause();
@@ -40,38 +58,29 @@ public class PauseGame : MonoBehaviour
             {
                 UnPause();
             }
-
         }
-    }
-
-    private void UpdateKeyboardPause()
-    {
-        if (!Keyboard.current.escapeKey.wasReleasedThisFrame)
-            return;
-        if (!isPaused)
-        {
-            Pause();
-        }
-        else
-        {
-            UnPause();
-        }
-    }
     
 
-    private void Pause()
-    {
-        Time.timeScale = 0f;
-        isPaused = true;
-        _HUD.SetActive(false);
-        _pauseMenu.SetActive(true);
-    }
+        private void Pause()
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+            _pauseMenu.SetActive(true);
+            foreach (var t in _disabledComponents)
+            {
+                t.SetActive(false);
+            }
+        }
 
-    private void UnPause()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-        _HUD.SetActive(true);
-        _pauseMenu.SetActive(false);
+        private void UnPause()
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+            _pauseMenu.SetActive(false);
+            foreach (var t in _disabledComponents)
+            {
+                t.SetActive(true);
+            }
+        }
     }
 }

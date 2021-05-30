@@ -19,11 +19,11 @@ namespace Input_Support
 
         protected override void Update()
         {
-            if (_controller.rightTrigger.wasReleasedThisFrame)
+            if (_controller.rightTrigger.wasReleasedThisFrame || _controller.leftTrigger.wasReleasedThisFrame || _controller.leftShoulder.wasReleasedThisFrame || _controller.rightShoulder.wasReleasedThisFrame)
             {
                 OnButtonUp();
             }
-            else if (_controller.rightTrigger.wasPressedThisFrame)
+            else if (_controller.rightTrigger.wasPressedThisFrame || _controller.leftTrigger.wasPressedThisFrame || _controller.leftShoulder.wasPressedThisFrame || _controller.rightShoulder.wasPressedThisFrame)
             {
                 OnButtonDown();
             }
