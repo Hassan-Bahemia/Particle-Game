@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
-
-public class EnemyYellowSpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _yellowEnemies;
-    [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private float _time;
     [SerializeField] private float _timeBetweenSpawns;
     [SerializeField] private float _angle;
@@ -16,6 +16,12 @@ public class EnemyYellowSpawner : MonoBehaviour
     [SerializeField] private float _minY, _maxY;
     [SerializeField] private int _enemiesCount;
     [SerializeField] private int _maxEnemiesOnScreen;
+    private EnemyManager _enemyManager;
+
+    private void Awake()
+    {
+        _enemyManager = GetComponent<EnemyManager>();
+    }
 
     private void Start()
     {
@@ -40,25 +46,15 @@ public class EnemyYellowSpawner : MonoBehaviour
         }
     }
 
-    public int GetEnemyCount()
-    {
-        return _enemies.Count;
-    }
-    
-    public List<GameObject> GetEnemies()
-    {
-        return _enemies;
-    }
-
     private void SpawnEnemy(GameObject spawnenemy)
     {
         _timeBetweenSpawns = Random.Range(2f, 10f);
         _angle = Random.Range(0f, 360f);
         _toBeSpawned = _yellowEnemies[Random.Range(0, _yellowEnemies.Length - 1)];
         _pos = new Vector2(Random.Range(_minX, _maxX), Random.Range(_minY, _maxY));
-        var newEnemy = Instantiate(_toBeSpawned, _pos, Quaternion.Euler(new Vector3(0f, 0f, _angle)));
+        var pT = transform;
+        var newEnemy = Instantiate(_toBeSpawned, _pos, Quaternion.Euler(new Vector3(0f, 0f, _angle)), pT);
         newEnemy.gameObject.tag = "Enemy";
-        
-        _enemies.Add(spawnenemy);
+        _enemyManager.AddEnemy(newEnemy);
     }
 }
