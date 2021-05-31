@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Capture
   - Enemy
+  - CaptureZone
   layers:
   - Default
   - TransparentFX
