@@ -13,12 +13,15 @@ namespace Game
         {
             isPaused = false;
             _pauseMenu.SetActive(false);
-            var _clonedEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var _disabledEnemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var t in _disabledComponents)
             {
                 t.SetActive(true);
             }
-            
+            foreach (var e in _disabledEnemies)
+            {
+                e.SetActive(false);
+            }
         }
 
         // Update is called once per frame

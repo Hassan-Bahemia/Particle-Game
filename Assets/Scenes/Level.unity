@@ -15497,6 +15497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _yellowEnemies:
   - {fileID: 7470981191697680976, guid: c0623f9837f634d4baa690b28bf4fd57, type: 3}
+  _enemies: []
   _time: 0
   _timeBetweenSpawns: 0
   _angle: 0
