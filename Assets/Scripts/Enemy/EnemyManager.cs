@@ -1,24 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+namespace Enemy
 {
-    
-    [SerializeField] private List<GameObject> _enemies;
-    
-    public int GetEnemyCount()
+    public class EnemyManager : MonoBehaviour
     {
-        return _enemies.Count;
-    }
     
-    public List<GameObject> GetEnemies()
-    {
-        return _enemies;
-    }
+        [SerializeField] private List<GameObject> _enemies;
+    
+        public int GetEnemyCount()
+        {
+            return _enemies.Count;
+        }
+    
+        public List<GameObject> GetEnemies()
+        {
+            return _enemies;
+        }
 
-    public void AddEnemy(GameObject enemy)
-    {
-        _enemies.Add(enemy);
+        public void AddEnemy(GameObject enemy)
+        {
+            _enemies.Add(enemy);
+        }
     }
 }

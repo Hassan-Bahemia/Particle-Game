@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 11272832}
   - component: {fileID: 11272831}
   - component: {fileID: 11272833}
+  - component: {fileID: 11272834}
   m_Layer: 0
   m_Name: CaptureOuter
   m_TagString: CaptureZone
@@ -4955,6 +4956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _captureZone: {fileID: 0}
+  _innerZone: {fileID: 0}
   _captureGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4984,6 +4986,61 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  _defaultGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _time: 0
+  _timeBetweenSpawns: 45
+  _timeBreak: 25
+  _minX: -30
+  _maxX: 26
+  _minY: 5
+  _maxY: -12
+  _pos: {x: 0, y: 0}
+  _playerManager: {fileID: 301443357}
+  isTouchingZone: 0
+--- !u!58 &11272834
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11272829}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.45
 --- !u!1 &81628613
 GameObject:
   m_ObjectHideFlags: 0
@@ -15063,6 +15120,38 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  playerID: 0
+  newPlayerID: 
+  playerColourIndex: 0
+  playerColour:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &370898498
 GameObject:
   m_ObjectHideFlags: 0
@@ -15544,7 +15633,7 @@ MonoBehaviour:
   _time: 0
   _timeBetweenSpawns: 0
   _angle: 0
-  _pos: {x: 0, y: 0, z: 0}
+  _pos: {x: 0, y: 0}
   _toBeSpawned: {fileID: 7470981191697680976, guid: c0623f9837f634d4baa690b28bf4fd57, type: 3}
   _minX: -31
   _maxX: 30
@@ -17049,7 +17138,7 @@ MonoBehaviour:
   _disabledComponents:
   - {fileID: 301443354}
   - {fileID: 1017692175}
-  - {fileID: 214483565}
+  - {fileID: 11272829}
   - {fileID: 643378946}
 --- !u!4 &1900906415
 Transform:

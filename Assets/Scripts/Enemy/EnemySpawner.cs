@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _time;
     [SerializeField] private float _timeBetweenSpawns;
     [SerializeField] private float _angle;
-    [SerializeField] private Vector3 _pos;
+    [SerializeField] private Vector2 _pos;
     [SerializeField] private GameObject _toBeSpawned;
     [SerializeField] private float _minX, _maxX;
     [SerializeField] private float _minY, _maxY;

@@ -8,6 +8,10 @@ namespace Player
         [SerializeField] private List<GameObject> _players;
         [SerializeField] private string[] _playerID;
         [SerializeField] private Gradient[] _playerColours;
+        [SerializeField] public int playerID;
+        [SerializeField] public string newPlayerID;
+        [SerializeField] public int playerColourIndex;
+        [SerializeField] public Gradient playerColour;
 
         public int GetPlayerCount()
         {
@@ -21,10 +25,10 @@ namespace Player
 
         public void AddPlayer(GameObject newPlayer)
         {
-            var playerID = _players.Count % _playerID.Length;
-            var newPlayerID = _playerID[playerID];
-            var playerColourIndex = _players.Count % _playerColours.Length;
-            var playerColour = _playerColours[playerColourIndex];
+            playerID = _players.Count % _playerID.Length;
+            newPlayerID = _playerID[playerID];
+            playerColourIndex = _players.Count % _playerColours.Length;
+            playerColour = _playerColours[playerColourIndex];
             newPlayer.GetComponent<PlayerColour>().SetColour(playerColour);
             newPlayer.GetComponent<PlayerName>().SetName(newPlayerID);
 

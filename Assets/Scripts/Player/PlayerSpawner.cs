@@ -15,7 +15,7 @@ namespace Player
         [SerializeField] private float _spawnXBound;
         [SerializeField] private List<Key> _keysToIgnore;
         [SerializeField] private GameObject _MousePlayer;
-        [SerializeField] private GameObject _ControllerPlayer;
+        [SerializeField] private GameObject _ControllerPlayer; 
         private PlayerManager _playerManager;
         private MouseInput _mouseInput;
 
