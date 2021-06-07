@@ -57,10 +57,39 @@ namespace CaptureZone
         public void SetOuterGradient(Gradient newcolorGradient)
         {
             _captureGradient = _captureGradient;
-            var mainOuterZone = _captureZone.main;
-            var mainInnerZone = _innerZone.main;
-            mainOuterZone.startColor = _captureGradient;
-            mainInnerZone.startColor = _captureGradient;
+            var players = _playerManager.GetPlayers();
+            foreach (var player in players)
+            {
+                var playerColour = player.GetComponent<PlayerColour>();
+                if (_playerManager.newPlayerID == "Player 1")
+                {
+                    var mainOuterZone = _captureZone.main;
+                    var mainInnerZone = _innerZone.main;
+                    mainOuterZone.startColor = playerColour.GetColour();
+                    mainInnerZone.startColor = playerColour.GetColour();
+                }
+                else if (_playerManager.newPlayerID == "Player 2")
+                {
+                    var mainOuterZone = _captureZone.main;
+                    var mainInnerZone = _innerZone.main;
+                    mainOuterZone.startColor = playerColour.GetColour();
+                    mainInnerZone.startColor = playerColour.GetColour();
+                }
+                else if (_playerManager.newPlayerID == "Player 3")
+                {
+                    var mainOuterZone = _captureZone.main;
+                    var mainInnerZone = _innerZone.main;
+                    mainOuterZone.startColor = playerColour.GetColour();
+                    mainInnerZone.startColor = playerColour.GetColour();
+                }
+                else if (_playerManager.newPlayerID == "Player 4")
+                {
+                    var mainOuterZone = _captureZone.main;
+                    var mainInnerZone = _innerZone.main;
+                    mainOuterZone.startColor = playerColour.GetColour();
+                    mainInnerZone.startColor = playerColour.GetColour();
+                }
+            }
         }
         
         public void DefaultColor(Gradient defaultcolorGradient)
@@ -77,6 +106,7 @@ namespace CaptureZone
             if (other.CompareTag("Player"))
             {
                 isTouchingZone = true;
+                SetOuterGradient(_captureGradient);
                 print("You are touching the zone");
             }
         }
@@ -86,6 +116,7 @@ namespace CaptureZone
             if (other.CompareTag("Player"))
             {
                 isTouchingZone = false;
+                DefaultColor(_defaultGradient);
                 print("You are leaving the zone");
             }
         }
