@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,13 +20,14 @@ namespace CaptureZone
         [SerializeField] private Vector2 _pos;
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private bool isTouchingZone;
+        [SerializeField] private List<Gradient> _playersInside;
 
         // Start is called before the first frame update
         private void Start()
         {
             _captureZone = GameObject.Find("CaptureOuter").GetComponent<ParticleSystem>();
             _innerZone = GameObject.Find("CaptureMid").GetComponent<ParticleSystem>();
-            DefaultColor(_defaultGradient);
+            SetOuterGradient(_defaultGradient);
             isTouchingZone = false;
         }
 
@@ -57,57 +59,34 @@ namespace CaptureZone
         public void SetOuterGradient(Gradient newcolorGradient)
         {
             _captureGradient = _captureGradient;
-            var players = _playerManager.GetPlayers();
-            foreach (var player in players)
-            {
-                var playerColour = player.GetComponent<PlayerColour>();
-                if (_playerManager.newPlayerID == "Player 1")
-                {
-                    var mainOuterZone = _captureZone.main;
-                    var mainInnerZone = _innerZone.main;
-                    mainOuterZone.startColor = playerColour.GetColour();
-                    mainInnerZone.startColor = playerColour.GetColour();
-                }
-                else if (_playerManager.newPlayerID == "Player 2")
-                {
-                    var mainOuterZone = _captureZone.main;
-                    var mainInnerZone = _innerZone.main;
-                    mainOuterZone.startColor = playerColour.GetColour();
-                    mainInnerZone.startColor = playerColour.GetColour();
-                }
-                else if (_playerManager.newPlayerID == "Player 3")
-                {
-                    var mainOuterZone = _captureZone.main;
-                    var mainInnerZone = _innerZone.main;
-                    mainOuterZone.startColor = playerColour.GetColour();
-                    mainInnerZone.startColor = playerColour.GetColour();
-                }
-                else if (_playerManager.newPlayerID == "Player 4")
-                {
-                    var mainOuterZone = _captureZone.main;
-                    var mainInnerZone = _innerZone.main;
-                    mainOuterZone.startColor = playerColour.GetColour();
-                    mainInnerZone.startColor = playerColour.GetColour();
-                }
-            }
-        }
-        
-        public void DefaultColor(Gradient defaultcolorGradient)
-        {
-            _captureGradient = defaultcolorGradient;
             var mainOuterZone = _captureZone.main;
             var mainInnerZone = _innerZone.main;
-            mainOuterZone.startColor = _defaultGradient;
-            mainInnerZone.startColor = _defaultGradient;
+            mainOuterZone.startColor = newcolorGradient;
+            mainInnerZone.startColor = newcolorGradient;
         }
+        
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            isTouchingZone = true;
+            var playerColour = other.GetComponent<PlayerColour>().GetColour();
+            if (!_playersInside.Contains(playerColour))
             {
-                isTouchingZone = true;
-                SetOuterGradient(_captureGradient);
-                print("You are touching the zone");
+                _playersInside.Add(playerColour);
+                UpdateZone();
+            }
+            print("You are touching the zone");
+        }
+
+        public void UpdateZone()
+        {
+            if (_playersInside.Count == 1)
+            {
+                SetOuterGradient(_playersInside[0]);
+            }
+            else
+            { 
+                SetOuterGradient(_defaultGradient);
             }
         }
         
@@ -116,7 +95,12 @@ namespace CaptureZone
             if (other.CompareTag("Player"))
             {
                 isTouchingZone = false;
-                DefaultColor(_defaultGradient);
+                var playerColours = other.GetComponent<PlayerColour>().GetColour();
+                if (_playersInside.Contains(playerColours))
+                {
+                    _playersInside.Remove(other.GetComponent<PlayerColour>().GetColour());   
+                    UpdateZone();
+                }
                 print("You are leaving the zone");
             }
         }
